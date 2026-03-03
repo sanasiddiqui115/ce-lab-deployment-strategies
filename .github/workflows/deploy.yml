@@ -14,7 +14,7 @@ permissions:
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  AWS_DEFAULT_REGION: us-east-1
+  AWS_DEFAULT_REGION: eu-north-1
 
 jobs:
   deploy:
@@ -49,7 +49,7 @@ jobs:
         run: |
           terraform init -backend=false
           TARGET="${{ steps.env.outputs.target }}"
-          BUCKET_NAME="deploy-lab-${TARGET}"
+          BUCKET_NAME="deploy-sana-lab-${TARGET}"
           echo "name=$BUCKET_NAME" >> "$GITHUB_OUTPUT"
 
       - name: Deploy to target environment
